@@ -9,37 +9,37 @@ from board import board
 # E.g.: cell by cell evolution, boundary conditions
 # handling, board resizing, and graphical rendering
 
-# another useful lib - allows time delay in graphics rendering
+# other classes I'm using
 import time
 import random
+import math
 
-# # Let's run a simple test of the import
-# a = cell()
-# a.live()
-# print(a.isalive)
-# a.die()
-# print(a.isalive)
-# # Seems to be working
-
+# Create a blank board
 len = 40
 b = board(len,len)
 
 ### INITIALIZATION ###
 
-# Board with top & left edges alive
-for i in range(0,len):
-    b.stork(0,i)
-    b.stork(i,0)
-
-# # Random board
-# for i in range(0,len):
-#     for j in range(0,len):
-#         if random.randint(0,1) == 1:
+# # Board with top left corner
+# for i in range(0,math.floor(len/2)):
+#     for j in range(0,math.floor(len/2)):
 #             b.stork(i,j)
 
-b.disp()
+# # Board with top & left edges alive
+# for i in range(0,len):
+#     b.stork(0,i)
+#     b.stork(i,0)
 
-# evolve the board freq times per second over t seconds
+# Random board
+for i in range(0,len):
+    for j in range(0,len):
+        if random.randint(0,1) == 1:
+            b.stork(i,j)
+
+### VISUALIZATION ###
+
+b.disp()
+# evolve the board 'freq' times per second over 't' seconds
 t = 15
 freq = 10
 for i in range(0,t*freq):
